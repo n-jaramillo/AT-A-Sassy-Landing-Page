@@ -1,3 +1,6 @@
+// import _btnConfig.scss (has _config.scss and _utilities.scss already imported)
+@import "btnConfig";
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -27,6 +30,56 @@ a {
   // 1. $variables
   // 2. nesting (dont forget about the ampersand (&) parent selector!)
   // 3. At-Rules
+
+  // style background using set-bg from _utilities.scss
+  @include set-bg($primary-color);
+  .box {
+    // style nav using flex-box to evenly space items
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+    }
+
+    // style li items to be inline, with spacing using flex, and no bullet points
+    ul {
+      display: flex;
+      list-style: none;
+    }
+
+    li {
+      padding: 0px 20px;
+    }
+
+    // style anchor color using text-color-picker function from _utilities.scss
+    a {
+      color: text-color-picker($primary-color);
+      &:hover {
+        color: $secondary-color;
+      }
+    }
+  }
+
+  // .hero-content
+  &-content {
+
+    // style div and img within .hero-content to be centered and side by side
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    // change font size
+    h1 {
+      font-size: 3em;
+    }
+
+    // change div, img widths for responsive design
+    div, img {
+      width: 50%;
+      padding: 10px;
+    }
+  }
 }
 
 // This code is related to some of the aspects of SCSS we have yet to cover.
